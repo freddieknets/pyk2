@@ -24,7 +24,7 @@ class K2Collimator:
     isthick = True
 
     def __init__(self, k2_engine, length, rotation, icoll,
-                 aperture, onesided, dx, dy):
+                 aperture, onesided, dx, dy, dpx, dpy):
 
         self.k2_engine = k2_engine
         self.length = length
@@ -34,6 +34,8 @@ class K2Collimator:
         self.onesided = onesided
         self.dx = dx
         self.dy = dy
+        self.dpx = dpx
+        self.dpy = dpy
 
     def track(self, particles):
 
@@ -43,9 +45,9 @@ class K2Collimator:
         npart = particles._num_active_particles
         assert npart <= self.k2_engine.n_alloc
         x_part = particles.x[:npart] - self.dx
-        xp_part = particles.px[:npart] * particles.rpp[:npart]
+        xp_part = (particles.px[:npart] - self.dpx) * particles.rpp[:npart]
         y_part = particles.y[:npart] - self.dy
-        yp_part = particles.py[:npart] * particles.rpp[:npart]
+        yp_part = (particles.py[:npart] - self.dpy) * particles.rpp[:npart]
         s_part = 0 * x_part
         p_part = particles.energy[:npart] / 1e9 # In GeV? Does it want energy or momentum
 
