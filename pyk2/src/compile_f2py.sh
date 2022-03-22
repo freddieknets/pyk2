@@ -1,6 +1,18 @@
 #!/bin/bash
 rm *.mod *.o
 
+# compile libraries
+cd crlibm
+cmake -DCMAKE_C_COMPILER=gcc .
+make
+mv libcrlibm.a ../
+cd ../roundctl
+cmake -DCMAKE_C_COMPILER=gcc .
+make
+mv libroundctl.a ../
+cd ..
+
+# compile fortran
 gfortran -fpic -c \
  core_tools.f90 \
  constants.f90 \
@@ -20,28 +32,8 @@ gfortran -fpic -c \
  coll_crystal.f90  \
  coll_k2.f90 \
  files.f90  \
- 
 
-#gfortran -shared -o libk2.so\
-# core_tools.o \
-# constants.o \
-# strings.o \
-# mod_alloc.o \
-# common_modules.o  \
-# string_tools.o  \
-# mod_units.o  \
-# bouncy_castle.o  \
-# libcrlibm.a  \
-# libroundctl.a  \
-# coll_jawfit.o  \
-# coll_common.o  \
-# coll_db.o  \
-# mod_ranlux.o  \
-# mod_funlux.o  \
-# coll_crystal.o  \
-# coll_k2.o \
-# files.o  \
-
+# link fortran
 f2py -m pyk2f -c pyk2.f90 \
  core_tools.o \
  constants.o \
