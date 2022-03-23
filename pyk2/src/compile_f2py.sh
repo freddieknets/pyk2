@@ -3,12 +3,18 @@ rm *.mod *.o
 
 # compile libraries
 cd crlibm
-cmake -DCMAKE_C_COMPILER=gcc .
-make
+make clean
+#cmake -DCMAKE_C_COMPILER=gcc .
+cmake .
+#make CXXFLAGS="-mmacosx-version-min=12.2"
+make CFLAGS=-fPIC
 mv libcrlibm.a ../
 cd ../roundctl
-cmake -DCMAKE_C_COMPILER=gcc .
-make
+make clean
+#cmake -DCMAKE_C_COMPILER=gcc .
+cmake .
+#make CXXFLAGS="-mmacosx-version-min=12.2"
+make CFLAGS=-fPIC
 mv libroundctl.a ../
 cd ..
 
