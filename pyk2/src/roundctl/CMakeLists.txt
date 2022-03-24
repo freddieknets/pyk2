@@ -12,7 +12,7 @@ endif()
 
 if(${CMAKE_C_COMPILER_ID} MATCHES "GNU")
 	if(${CMAKE_SYSTEM_PROCESSOR} MATCHES AMD64 OR ${CMAKE_SYSTEM_PROCESSOR} MATCHES x86_64 OR ${CMAKE_SYSTEM_PROCESSOR} MATCHES i686)
-		target_compile_options(roundctl PRIVATE -mfpmath=sse -msse2 -std=c99 -W -Wall -pedantic)
+		target_compile_options(roundctl PRIVATE -fPIC -mfpmath=sse -msse2 -std=c99 -W -Wall -pedantic)
 	else()
 		target_compile_options(roundctl PRIVATE -std=c99 -W -Wall -pedantic)
 	endif()

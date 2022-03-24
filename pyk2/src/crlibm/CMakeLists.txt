@@ -9,7 +9,7 @@ add_library(crlibm2 OBJECT ${CRLIBM2_SOURCES})
 set(lessWarnings  -Wno-sign-conversion -Wno-conversion -Wno-long-long)
 
 target_compile_options(crlibm1 PRIVATE -mfpmath=sse -msse2 -fPIC -std=c99 -Wall -Wshadow -Wpointer-arith -Wcast-align -Wconversion -Waggregate-return -Wstrict-prototypes -Wnested-externs -Wlong-long -Winline -pedantic -fno-strict-aliasing ${lessWarnings})
-target_compile_options(crlibm2 PRIVATE -mfpmath=sse -msse2 -Wall -Wshadow -Wpointer-arith -Wcast-align -Wconversion -Waggregate-return -Wstrict-prototypes -Wnested-externs -Wlong-long -Winline ${lessWarnings})
+target_compile_options(crlibm2 PRIVATE -mfpmath=sse -msse2 -fPIC -Wall -Wshadow -Wpointer-arith -Wcast-align -Wconversion -Waggregate-return -Wstrict-prototypes -Wnested-externs -Wlong-long -Winline ${lessWarnings})
 
 #glue the parts together
 add_library(crlibm $<TARGET_OBJECTS:crlibm1> $<TARGET_OBJECTS:crlibm2>)
