@@ -1,22 +1,20 @@
 #!/bin/bash
-rm *.mod *.o
-
 
 # source /cvmfs/sft.cern.ch/lcg/views/LCG_101/x86_64-centos8-gcc11-opt/setup.sh
+
+cd pyk2/src/
+rm *.mod *.o
+
 
 # compile libraries
 cd crlibm
 make clean
-#cmake -DCMAKE_C_COMPILER=gcc .
 cmake .
-#make CXXFLAGS="-mmacosx-version-min=12.2"
 make CFLAGS=-fPIC
 mv libcrlibm.a ../
 cd ../roundctl
 make clean
-#cmake -DCMAKE_C_COMPILER=gcc .
 cmake .
-#make CXXFLAGS="-mmacosx-version-min=12.2"
 make CFLAGS=-fPIC
 mv libroundctl.a ../
 cd ..
@@ -63,4 +61,6 @@ f2py -m pyk2f -c pyk2.f90 \
  libcrlibm.a  \
  libroundctl.a  
 
- mv pyk2f.*.so ../
+mv pyk2f.*.so ../
+
+cd ../../
