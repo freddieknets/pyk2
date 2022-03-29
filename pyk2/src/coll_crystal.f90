@@ -215,7 +215,7 @@ end subroutine cry_startElement
 ! ================================================================================================ !
 !  Subroutine for checking for interactions with crystal
 ! ================================================================================================ !
-subroutine cry_doCrystal(ie,iturn,j,mat,x,xp,z,zp,s,p,x0,xp0,zlm,s_imp,isImp,nhit,nabs, &
+subroutine cry_doCrystal(ie,j,mat,x,xp,z,zp,s,p,x0,xp0,zlm,s_imp,isImp,nhit,nabs, &
   lhit,lhit_turn,part_abs,part_abs_turn,impact,indiv,c_length)
 
   use parpro
@@ -223,7 +223,6 @@ subroutine cry_doCrystal(ie,iturn,j,mat,x,xp,z,zp,s,p,x0,xp0,zlm,s_imp,isImp,nhi
   use mathlib_bouncer
 
   integer,          intent(in)    :: ie
-  integer,          intent(in)    :: iturn
   integer,          intent(in)    :: j
   integer,          intent(in)    :: mat
 
@@ -318,7 +317,7 @@ subroutine cry_doCrystal(ie,iturn,j,mat,x,xp,z,zp,s,p,x0,xp0,zlm,s_imp,isImp,nhi
       isImp        = .true.
       nhit         = nhit + 1
       lhit(j)      = ie
-      lhit_turn(j) = iturn
+      lhit_turn(j) = 100
       impact(j)    = x0
       indiv(j)     = xp0
     end if
@@ -388,7 +387,7 @@ subroutine cry_doCrystal(ie,iturn,j,mat,x,xp,z,zp,s,p,x0,xp0,zlm,s_imp,isImp,nhi
           isImp        = .true.
           nhit         = nhit + 1
           lhit(j)      = ie
-          lhit_turn(j) = iturn
+          lhit_turn(j) = 100
           impact(j)    = x0
           indiv(j)     = xp0
         end if

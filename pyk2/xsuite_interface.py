@@ -128,7 +128,6 @@ class K2Collimator:
                       nabs_type=nabs_type,
                       linside=linside,
                       icoll=self.icoll,
-                      iturn=100,                       # ignore: but probably does extra stuff if turn==1
                       ie=1,                            # ignore: structure element index
                       c_length=self.active_length,
                       c_rotation=self.angle/180.*np.pi,
