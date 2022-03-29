@@ -78,7 +78,7 @@ class K2Collimator:
 
         # Drift inactive front
         L = self.inactive_front
-        if L_inactive_front > 0:
+        if L > 0:
             rpp = particles.rpp[:npart]
             xp = particles.px[:npart] * rpp
             yp = particles.py[:npart] * rpp
@@ -194,7 +194,7 @@ class K2Collimator:
 
         # Drift inactive back
         L = self.inactive_back
-        if L_inactive_front > 0:
+        if L > 0:
             rpp = particles.rpp[:npart]
             xp = particles.px[:npart] * rpp
             yp = particles.py[:npart] * rpp
